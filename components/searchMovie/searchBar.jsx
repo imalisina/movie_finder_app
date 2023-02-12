@@ -20,13 +20,13 @@ const SearchBar = () => {
     // Define a method to handle API call operation
     const handler = async () => {
         setLoading(true);
-        setSearchedMovie([]);
-        await axios.get(`${API_KEY}&t=${movieQuery}`).then((response) => {
-            setSearchedMovie(response.data);
-            setMovieQuery("");
-        }).finally(() => {
-            setLoading(false);
-        });
+        // setSearchedMovie([]);
+        // await axios.get(`${API_KEY}&t=${movieQuery}`).then((response) => {
+        //     setSearchedMovie(response.data);
+        //     setMovieQuery("");
+        // }).finally(() => {
+        //     setLoading(false);
+        // });
     }
 
     useEffect(() => {
@@ -53,7 +53,9 @@ const SearchBar = () => {
             {
                 searchedMovie.length != 0
                 ? (<MovieDetails />)
-                : (<MoviePlaceholder />)
+                : isLoading 
+                    ? (<MoviePlaceholder />)
+                    : ""
             }
         </div>
     );
