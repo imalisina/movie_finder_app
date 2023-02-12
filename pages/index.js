@@ -4,6 +4,7 @@ import Head from 'next/head';
 // Other components
 import NavbarContainer from '../components/navbar/navbarContainer';
 import HeroContainer from '../components/hero/heroContainer';
+import SearchMovieContainer from '../components/searchMovie/searchMovieContainer';
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       {/* Document body section */}
       <NavbarContainer />
       <HeroContainer />
+      <SearchMovieContainer />
     </>
   )
 }
