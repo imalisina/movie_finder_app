@@ -31,7 +31,7 @@ const SearchBar = () => {
 
     useEffect(() => {
         console.log(searchedMovie);
-    }, [isLoading])
+    }, [isLoading]);
 
     return (
         <div className='my-5 w-4/5 mx-auto'>
@@ -50,6 +50,7 @@ const SearchBar = () => {
                     }
                 </button>
             </div>
+            {/* Check the conditions to show whether movie details or placeholder (Skeleton) */}
             {
                 searchedMovie.length != 0
                 ? (<MovieDetails />)
