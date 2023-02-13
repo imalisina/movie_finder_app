@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 // Other components
+import Loading from './loading';
 import MovieDetails from './movieDetails';
 import MoviePlaceholder from './moviePlaceholder';
-import Loading from './loading';
 
 const SearchBar = () => {
     // API KEY from OMDb API
