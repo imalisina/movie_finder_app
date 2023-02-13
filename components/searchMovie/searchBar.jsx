@@ -14,6 +14,10 @@ const SearchBar = () => {
     const [movieQuery, setMovieQuery] = useState("");
     // Define a state to store the searched movie data
     const [searchedMovie, setSearchedMovie] = useState([]);
+    // Define a constant to store the error messages
+    const errorMsg = "Invalid movie keyword. Try again !";
+    // Define a state to check error status
+    const [ hasError, setHasError ] = useState(false);
     // Define a state to toggle loading status
     const [isLoading, setLoading] = useState(false);
     
@@ -22,9 +26,13 @@ const SearchBar = () => {
         setLoading(true);
         setSearchedMovie([]);
         await axios.get(`${API_KEY}&t=${movieQuery}`).then((response) => {
+            if (!response.data.Error) {
             setSearchedMovie(response.data);
-            setMovieQuery("");
+        } else {
+            setHasError(true);
+            }
         }).finally(() => {
+            setMovieQuery("");
             setLoading(false);
         });
     }
@@ -52,11 +60,13 @@ const SearchBar = () => {
             </div>
             {/* Check the conditions to show whether movie details or placeholder (Skeleton) */}
             {
-                searchedMovie.length != 0
+                searchedMovie.length != 0 && !hasError
                 ? (<MovieDetails movieData={searchedMovie} />)
                 : isLoading 
                     ? (<MoviePlaceholder />)
-                    : ""
+                    : hasError
+                        ? (<h1>{errorMsg}</h1>)
+                        : ""
             }
         </div>
     );
