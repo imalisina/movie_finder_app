@@ -1,7 +1,18 @@
 import '../styles/globals.css';
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+// Layouts
+import NavbarContainer from '../components/navbar/navbarContainer';
+
+const MyApp = ({ Component, pageProps }) => {
+  return (
+    <>
+      {/* App navbar layout */}
+      <NavbarContainer />
+
+      {/* Next App */}
+      <Component {...pageProps} />
+    </>
+  )
 }
 
 export default MyApp
