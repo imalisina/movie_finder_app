@@ -6,7 +6,9 @@ import SearchBar from './searchBar';
 const SearchMovieContainer = () => {
     return (
         <>
-            <h1>Should add a header with HR tag from tailwindCSS</h1>
+            {/* Title */}
+            <h2 className="my-6 text-center text-3xl font-bold leading-none tracking-tight text-gray-700 md:text-4xl">Let's start for free !</h2>
+            {/* Movie search input */}
             <SearchBar />
         </>
     );
